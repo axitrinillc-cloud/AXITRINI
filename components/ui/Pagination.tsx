@@ -43,17 +43,19 @@ export function Pagination({
           )
         }
 
+        const pageNumber = page as number
+
         return (
           <Button
-            key={page}
-            variant={currentPage === page ? 'primary' : 'outline'}
+            key={pageNumber}
+            variant={currentPage === pageNumber ? 'primary' : 'outline'}
             size="sm"
-            onClick={() => onPageChange(page)}
+            onClick={() => onPageChange(pageNumber)}
             className="min-w-[40px]"
-            aria-label={`Page ${page}`}
-            aria-current={currentPage === page ? 'page' : undefined}
+            aria-label={`Page ${pageNumber}`}
+            aria-current={currentPage === pageNumber ? 'page' : undefined}
           >
-            {page}
+            {pageNumber}
           </Button>
         )
       })}

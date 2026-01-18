@@ -38,15 +38,15 @@ const mockOrder = {
   },
 }
 
-const statusConfig = {
-  delivered: { label: 'Delivered', variant: 'success' as const },
-  shipped: { label: 'Shipped', variant: 'default' as const },
-  processing: { label: 'Processing', variant: 'warning' as const },
-  cancelled: { label: 'Cancelled', variant: 'error' as const },
+const statusConfig: Record<string, { label: string; variant: 'success' | 'default' | 'warning' | 'error' }> = {
+  delivered: { label: 'Delivered', variant: 'success' },
+  shipped: { label: 'Shipped', variant: 'default' },
+  processing: { label: 'Processing', variant: 'warning' },
+  cancelled: { label: 'Cancelled', variant: 'error' },
 }
 
 export default function OrderDetailPage({ params }: { params: { id: string } }) {
-  const status = statusConfig[mockOrder.status]
+  const status = statusConfig[mockOrder.status] || statusConfig.processing
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8">

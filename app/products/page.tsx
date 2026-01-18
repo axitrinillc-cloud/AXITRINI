@@ -113,7 +113,7 @@ export default function ProductsPage() {
             <div className="prose prose-lg max-w-none">
               <p className="text-lg text-neutral-700 leading-relaxed mb-4">
                 At Axitrini, we believe in the power of focus. Instead of offering hundreds of
-                products, we've carefully selected just three exceptional items that we're
+                products, we&apos;ve carefully selected just three exceptional items that we&apos;re
                 genuinely proud to stand behind.
               </p>
               <p className="text-lg text-neutral-700 leading-relaxed mb-4">

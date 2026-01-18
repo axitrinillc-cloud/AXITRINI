@@ -3,10 +3,11 @@ import { cn } from '@/lib/utils'
 import { Loader2 } from 'lucide-react'
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'asChild'> {
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'destructive'
   size?: 'sm' | 'md' | 'lg'
   isLoading?: boolean
+  asChild?: boolean
   children: React.ReactNode
 }
 
@@ -18,6 +19,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       size = 'md',
       isLoading = false,
       disabled,
+      asChild = false,
       children,
       ...props
     },
@@ -45,15 +47,26 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       lg: 'h-12 px-8 text-lg',
     }
 
+    const buttonClasses = cn(
+      baseStyles,
+      variants[variant],
+      sizes[size],
+      className
+    )
+
+    if (asChild && React.isValidElement(children)) {
+      return React.cloneElement(children as React.ReactElement<any>, {
+        className: cn(buttonClasses, (children as React.ReactElement<any>).props.className),
+        ref,
+        disabled: disabled || isLoading,
+        ...props,
+      })
+    }
+
     return (
       <button
         ref={ref}
-        className={cn(
-          baseStyles,
-          variants[variant],
-          sizes[size],
-          className
-        )}
+        className={buttonClasses}
         disabled={disabled || isLoading}
         {...props}
       >

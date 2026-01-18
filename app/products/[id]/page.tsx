@@ -267,7 +267,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
               <CardContent className="p-6">
                 <div className="text-center py-12">
                   <p className="text-lg text-neutral-600 mb-4">
-                    Reviews are displayed on Amazon. Click "Buy on Amazon" to see customer
+                    Reviews are displayed on Amazon. Click &quot;Buy on Amazon&quot; to see customer
                     reviews and ratings.
                   </p>
                   <Button variant="outline" onClick={handleAmazonRedirect}>

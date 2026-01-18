@@ -39,11 +39,11 @@ const mockOrders = [
   },
 ]
 
-const statusConfig = {
-  delivered: { label: 'Delivered', variant: 'success' as const },
-  shipped: { label: 'Shipped', variant: 'default' as const },
-  processing: { label: 'Processing', variant: 'warning' as const },
-  cancelled: { label: 'Cancelled', variant: 'error' as const },
+const statusConfig: Record<string, { label: string; variant: 'success' | 'default' | 'warning' | 'error' }> = {
+  delivered: { label: 'Delivered', variant: 'success' },
+  shipped: { label: 'Shipped', variant: 'default' },
+  processing: { label: 'Processing', variant: 'warning' },
+  cancelled: { label: 'Cancelled', variant: 'error' },
 }
 
 export default function OrdersPage() {
@@ -74,7 +74,7 @@ export default function OrdersPage() {
 
       <div className="space-y-4">
         {mockOrders.map((order) => {
-          const status = statusConfig[order.status]
+          const status = statusConfig[order.status] || statusConfig.processing
           const isExpanded = selectedOrder === order.id
 
           return (
