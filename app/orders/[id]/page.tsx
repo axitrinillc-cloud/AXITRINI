@@ -6,6 +6,8 @@ import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
 import { formatPrice, formatDate } from '@/lib/utils'
 
+export const runtime = 'edge'
+
 // Mock order detail - replace with real API call
 const mockOrder = {
   id: 'ORD-001',

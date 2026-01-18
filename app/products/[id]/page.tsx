@@ -12,6 +12,8 @@ import { formatPrice } from '@/lib/utils'
 import { getProductById } from '@/lib/products'
 import { notFound } from 'next/navigation'
 
+export const runtime = 'edge'
+
 export default function ProductDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params)
   const product = getProductById(id)
