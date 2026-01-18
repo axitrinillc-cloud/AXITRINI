@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, use } from 'react'
 import { Star, Truck, RotateCcw, Shield, Minus, Plus, Heart, ExternalLink } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 import { Badge } from '@/components/ui/Badge'
@@ -12,8 +12,9 @@ import { formatPrice } from '@/lib/utils'
 import { getProductById } from '@/lib/products'
 import { notFound } from 'next/navigation'
 
-export default function ProductDetailPage({ params }: { params: { id: string } }) {
-  const product = getProductById(params.id)
+export default function ProductDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params)
+  const product = getProductById(id)
 
   if (!product) {
     notFound()

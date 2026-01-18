@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { use } from 'react'
 import Link from 'next/link'
 import { ArrowLeft, Package, Truck, MapPin } from 'lucide-react'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/Card'
@@ -45,7 +45,8 @@ const statusConfig: Record<string, { label: string; variant: 'success' | 'defaul
   cancelled: { label: 'Cancelled', variant: 'error' },
 }
 
-export default function OrderDetailPage({ params }: { params: { id: string } }) {
+export default function OrderDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params)
   const status = statusConfig[mockOrder.status] || statusConfig.processing
 
   return (
