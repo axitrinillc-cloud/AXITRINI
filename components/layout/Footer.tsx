@@ -7,7 +7,8 @@ export function Footer() {
     company: [
       { name: 'Our Story', href: '/#story' },
       { name: 'What We Do', href: '/#what-we-do' },
-      { name: 'Contact', href: 'mailto:contact@axitrini.com' },
+      { name: 'Careers', href: '/careers' },
+      { name: 'Contact', href: '/contact' },
     ],
     legal: [
       { name: 'Privacy Policy', href: '/privacy' },

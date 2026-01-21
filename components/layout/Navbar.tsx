@@ -13,7 +13,8 @@ export function Navbar() {
   const navItems = [
     { name: 'Our Story', href: '/#story' },
     { name: 'What We Do', href: '/#what-we-do' },
-    { name: 'Contact', href: 'mailto:contact@axitrini.com' },
+    { name: 'Careers', href: '/careers' },
+    { name: 'Contact', href: '/contact' },
   ]
 
   return (
